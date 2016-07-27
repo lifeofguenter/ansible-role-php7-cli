@@ -18,7 +18,7 @@
   shell: chdir=/tmp/php-memcached-php7 /opt/php7/bin/phpize > /dev/null
 
 - name: Configure
-  shell: chdir=/tmp/php-memcached-php7 ./configure --with-php-config=/opt/php7/bin/php-config > /dev/null
+  shell: chdir=/tmp/php-memcached-php7 ./configure --with-php-config=/opt/php7/bin/php-config --disable-memcached-sasl > /dev/null
 
 - name: Make
   shell: chdir=/tmp/php-memcached-php7 make > /dev/null
