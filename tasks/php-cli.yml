@@ -9,7 +9,6 @@
     - libbz2-1.0
     - libcurl3
     - libwebp5
-    - libjpeg62-turbo
     - libpng12-0
     - libxpm4
     - libfreetype6
