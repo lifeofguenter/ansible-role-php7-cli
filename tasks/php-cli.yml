@@ -1,0 +1,65 @@
+---
+
+- name: Install dependencies
+  apt: name={{ item }} state=present update_cache=yes cache_valid_time=3600
+  with_items:
+    - libssl1.0.0
+    - libicu52
+    - libxml2
+    - libbz2-1.0
+    - libcurl3
+    - libwebp5
+    - libjpeg62-turbo
+    - libpng12-0
+    - libxpm4
+    - libfreetype6
+    - libmcrypt4
+    - libedit2
+    - libreadline6
+    - libxslt1.1
+    - libzip2
+    - make
+    - gcc
+    - pkg-config
+    - automake
+    - autoconf
+  become: yes
+
+- name: Fetch .deb
+  get_url: url=ftp://ftp.weheartwebsites.de/debian/jessie/php7.0-cli_{{ php7_version }}_amd64.deb dest=/tmp/php7.0-cli_{{ php7_version }}_amd64.deb
+
+- name: Install .deb
+  apt: deb=/tmp/php7.0-cli_{{ php7_version }}_amd64.deb
+  become: yes
+
+- name: Create directories
+  file: path=/etc/php7/cli/conf.d recurse=yes state=directory mode=0755
+  become: yes
+
+- name: Copy php.ini
+  template: src=php7-cli.ini.j2 dest=/etc/php7/cli/php.ini mode=0644
+  become: yes
+
+- name: Create composer shortcut
+  copy:
+    content: |
+      #!/bin/bash
+      set -e
+      /opt/php7/bin/php /usr/bin/composer "${@}"
+    dest: /usr/local/bin/composer7
+    mode: "a+x"
+    owner: root
+    group: root
+  become: yes
+
+- name: Create phpunit shortcut
+  copy:
+    content: |
+      #!/bin/bash
+      set -e
+      /opt/php7/bin/php /usr/local/bin/phpunit "${@}"
+    dest: /usr/local/bin/phpunit7
+    mode: "a+x"
+    owner: root
+    group: root
+  become: yes

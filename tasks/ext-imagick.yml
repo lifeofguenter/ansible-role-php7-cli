@@ -1,0 +1,28 @@
+---
+
+- name: Install libmagickwand-dev
+  apt: name=libmagickwand-dev state=present update_cache=yes cache_valid_time=3600
+  become: yes
+
+- name: Download source code
+  get_url: url=http://pecl.php.net/get/imagick-{{ php7_ext_imagick_version }}.tgz dest=/tmp/imagick-{{ php7_ext_imagick_version }}.tgz
+
+- name: Extract archive
+  command: chdir=/tmp/ tar xfz imagick-{{ php7_ext_imagick_version }}.tgz creates=/tmp/imagick-{{ php7_ext_imagick_version }}
+
+- name: Make clean
+  shell: chdir=/tmp/imagick-{{ php7_ext_imagick_version }} make clean > /dev/null
+  ignore_errors: yes
+
+- name: Phpize
+  shell: chdir=/tmp/imagick-{{ php7_ext_imagick_version }} /opt/php7/bin/phpize > /dev/null
+
+- name: Configure
+  shell: chdir=/tmp/imagick-{{ php7_ext_imagick_version }} ./configure --with-php-config=/opt/php7/bin/php-config > /dev/null
+
+- name: Make
+  shell: chdir=/tmp/imagick-{{ php7_ext_imagick_version }} make > /dev/null
+
+- name: Install
+  shell: chdir=/tmp/imagick-{{ php7_ext_imagick_version }} make install > /dev/null
+  become: yes
