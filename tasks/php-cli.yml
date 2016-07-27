@@ -70,3 +70,7 @@
     owner: root
     group: root
   become: yes
+
+- name: Create php7 shortcut
+  file: src=/opt/php7/bin/php dest=/usr/local/bin/php7 owner=root group=root state=link
+  become: yes
