@@ -33,7 +33,7 @@
   when: ansible_distribution == 'Ubuntu'
 
 - name: Fetch .deb
-  get_url: url=ftp://ftp.weheartwebsites.de/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/php7.0-cli_{{ php7_version }}_amd64.deb dest=/tmp/php7.0-cli_{{ php7_version }}_amd64.deb
+  get_url: url=https://ftp.weheartwebsites.de/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/php7.0-cli_{{ php7_version }}_amd64.deb dest=/tmp/php7.0-cli_{{ php7_version }}_amd64.deb
 
 - name: Install .deb
   apt: deb=/tmp/php7.0-cli_{{ php7_version }}_amd64.deb
