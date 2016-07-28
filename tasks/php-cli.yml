@@ -16,7 +16,6 @@
     - libedit2
     - libreadline6
     - libxslt1.1
-    - libzip2
     - make
     - gcc
     - pkg-config
