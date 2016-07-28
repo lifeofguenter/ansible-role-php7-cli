@@ -5,10 +5,10 @@
   register: php7_current
   ignore_errors: yes
 
-- debug: var=php7_version
+#- debug: var=php7_version
 
-- debug: msg="PHP {{ php7_version | regex_replace('-\\d+$', '') }} (cli)"
+#- debug: msg="PHP {{ php7_version | regex_replace('-\\d+$', '') }} (cli)"
 
-#- name: Install php-cli
-#  include: php-cli.yml
-#  when: php7_current.rc != 0 or php7_current.stdout.find('PHP {{ php7_version | regex_replace('-\\d+$', '') }} (cli)') == -1
+- name: Install php-cli
+  include: php-cli.yml
+  when: php7_current.rc != 0 or php7_current.stdout.find("PHP {{ php7_version | regex_replace('-\\d+$', '') }} (cli)") == -1
