@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lifeofguenter/ansible-role-php7-cli.svg?branch=master)](https://travis-ci.org/lifeofguenter/ansible-role-php7-cli)
+
 php7-cli
 =========
 
@@ -20,8 +22,6 @@ Dependencies
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
