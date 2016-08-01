@@ -10,7 +10,6 @@
     - libcurl3
     - libwebp5
     - libpng12-0
-    - libxpm4
     - libfreetype6
     - libmcrypt4
     - libedit2
