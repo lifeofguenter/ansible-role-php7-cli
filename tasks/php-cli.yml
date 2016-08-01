@@ -36,11 +36,6 @@
   file: path=/etc/php7/cli/conf.d recurse=yes state=directory mode=0755
   become: yes
 
-- name: Create log folder
-  file: state=directory mode=0755 recurse=yes path={{ php7cli_error_log | dirname }}
-  when: php7cli_error_log is defined
-  become: yes
-
 - name: Copy php.ini
   template: src=php7-cli.ini.j2 dest=/etc/php7/cli/php.ini mode=0644
   become: yes
