@@ -2,14 +2,14 @@
 
 - name: Get php version
   command: php7 --version
-  register: php7_current
+  register: php7cli_current
   ignore_errors: yes
 
-- set_fact: php7_real_version="{{ php7_version | regex_replace('-\\d+$', '') }}"
+- set_fact: php7cli_real_version="{{ php7cli_version | regex_replace('-\\d+$', '') }}"
 
 - name: Install php-cli
   include: php-cli.yml
-  when: php7_current.rc != 0 or php7_current.stdout.find("PHP {{ php7_real_version }} (cli)") == -1
+  when: php7cli_current.rc != 0 or php7cli_current.stdout.find("PHP {{ php7cli_real_version }} (cli)") == -1
 
 - include: ext-apcu.yml
 
