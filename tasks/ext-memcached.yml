@@ -10,9 +10,9 @@
   become: yes
   when: ansible_distribution == 'Ubuntu'
 
-- name: Fetch .deb
+- name: Fetch memcached .deb
   get_url: url=https://ftp.weheartwebsites.de/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/php7.0-memcached_{{ php7_ext_memcached_version }}_amd64.deb dest=/tmp/php7.0-memcached_{{ php7_ext_memcached_version }}_amd64.deb
 
-- name: Install .deb
+- name: Install memcached .deb
   apt: deb=/tmp/php7.0-memcached_{{ php7_ext_memcached_version }}_amd64.deb
   become: yes

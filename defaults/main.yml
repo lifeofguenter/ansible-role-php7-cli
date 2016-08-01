@@ -6,8 +6,8 @@ php7_ext_apcu_version: 5.1.5-15
 
 php7_ext_imagick_version: 3.4.3RC1-15
 
-php7_ext_igbinary_version: 1.2.2b4-15
+php7_ext_igbinary_version: 1.2.2b-15
 
-php7_ext_memcached_version: 3.0.0b2-15
+php7_ext_memcached_version: 3.0.0b-15
 
 php7_ext_redis_version: 3.0.0-15
