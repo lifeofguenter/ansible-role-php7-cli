@@ -11,10 +11,12 @@ report_memleaks = On
 track_errors = Off
 html_errors = Off
 
-log_errors = On
 error_reporting = E_ALL
 {% if php7cli_error_log is defined %}
+log_errors = On
 error_log = "{{ php7cli_error_log }}"
+{% else %}
+log_errors = Off
 {% endif %}
 request_order = "GP"
 register_globals = Off
