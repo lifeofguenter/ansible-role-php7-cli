@@ -1,24 +1,8 @@
 ---
 
-- name: Download source code
-  get_url: url=https://github.com/phpredis/phpredis/archive/php7.zip dest=/tmp/php7-redis.zip
+- name: Fetch .deb
+  get_url: url=https://ftp.weheartwebsites.de/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/php7.0-redis_{{ php7_ext_redis_version }}_amd64.deb dest=/tmp/php7.0-redis_{{ php7_ext_redis_version }}_amd64.deb
 
-- name: Extract archive
-  unarchive: src=/tmp/php7-redis.zip dest=/tmp copy=no
-
-- name: Make clean
-  shell: chdir=/tmp/phpredis-php7 make clean > /dev/null
-  ignore_errors: yes
-
-- name: Phpize
-  shell: chdir=/tmp/phpredis-php7 /opt/php7/bin/phpize > /dev/null
-
-- name: Configure
-  shell: chdir=/tmp/phpredis-php7 ./configure --with-php-config=/opt/php7/bin/php-config > /dev/null
-
-- name: Make
-  shell: chdir=/tmp/phpredis-php7 make > /dev/null
-
-- name: Install
-  shell: chdir=/tmp/phpredis-php7 make install > /dev/null
+- name: Install .deb
+  apt: deb=/tmp/php7.0-redis_{{ php7_ext_redis_version }}_amd64.deb
   become: yes

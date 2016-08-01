@@ -1,24 +1,8 @@
 ---
 
-- name: Download source code
-  get_url: url=http://pecl.php.net/get/apcu-{{ php7_ext_apcu_version }}.tgz dest=/tmp/apcu-{{ php7_ext_apcu_version }}.tgz
+- name: Fetch .deb
+  get_url: url=https://ftp.weheartwebsites.de/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/php7.0-apcu_{{ php7_ext_apcu_version }}_amd64.deb dest=/tmp/php7.0-apcu_{{ php7_ext_apcu_version }}_amd64.deb
 
-- name: Extract archive
-  command: chdir=/tmp/ tar xfz apcu-{{ php7_ext_apcu_version }}.tgz creates=/tmp/apcu-{{ php7_ext_apcu_version }}
-
-- name: Make clean
-  shell: chdir=/tmp/apcu-{{ php7_ext_apcu_version }} make clean > /dev/null
-  ignore_errors: yes
-
-- name: Phpize
-  shell: chdir=/tmp/apcu-{{ php7_ext_apcu_version }} /opt/php7/bin/phpize > /dev/null
-
-- name: Configure
-  shell: chdir=/tmp/apcu-{{ php7_ext_apcu_version }} ./configure --with-php-config=/opt/php7/bin/php-config > /dev/null
-
-- name: Make
-  shell: chdir=/tmp/apcu-{{ php7_ext_apcu_version }} make > /dev/null
-
-- name: Install
-  shell: chdir=/tmp/apcu-{{ php7_ext_apcu_version }} make install > /dev/null
+- name: Install .deb
+  apt: deb=/tmp/php7.0-apcu_{{ php7_ext_apcu_version }}_amd64.deb
   become: yes

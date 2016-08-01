@@ -1,28 +1,18 @@
 ---
 
-- name: Install libmemcached-dev
-  apt: name=libmemcached-dev state=present update_cache=yes cache_valid_time=3600
+- name: Install libmemcached
+  apt: name=libmemcached11 state=present update_cache=yes cache_valid_time=3600
   become: yes
+  when: ansible_distribution == 'Debian'
 
-- name: Download source code
-  get_url: url=https://github.com/php-memcached-dev/php-memcached/archive/php7.zip dest=/tmp/php7-memcached.zip
+- name: Install libmemcached
+  apt: name=libmemcached10 state=present update_cache=yes cache_valid_time=3600
+  become: yes
+  when: ansible_distribution == 'Ubuntu'
 
-- name: Extract archive
-  unarchive: src=/tmp/php7-memcached.zip dest=/tmp copy=no
+- name: Fetch .deb
+  get_url: url=https://ftp.weheartwebsites.de/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/php7.0-memcached_{{ php7_ext_memcached_version }}_amd64.deb dest=/tmp/php7.0-memcached_{{ php7_ext_memcached_version }}_amd64.deb
 
-- name: Make clean
-  shell: chdir=/tmp/php-memcached-php7 make clean > /dev/null
-  ignore_errors: yes
-
-- name: Phpize
-  shell: chdir=/tmp/php-memcached-php7 /opt/php7/bin/phpize > /dev/null
-
-- name: Configure
-  shell: chdir=/tmp/php-memcached-php7 ./configure --with-php-config=/opt/php7/bin/php-config --disable-memcached-sasl > /dev/null
-
-- name: Make
-  shell: chdir=/tmp/php-memcached-php7 make > /dev/null
-
-- name: Install
-  shell: chdir=/tmp/php-memcached-php7 make install > /dev/null
+- name: Install .deb
+  apt: deb=/tmp/php7.0-memcached_{{ php7_ext_memcached_version }}_amd64.deb
   become: yes

@@ -5,12 +5,18 @@
   register: php7_current
   ignore_errors: yes
 
-#- debug: var=php7_version
-
-#- debug: msg="PHP {{ php7_version | regex_replace('-\\d+$', '') }} (cli)"
-
 - set_fact: php7_real_version="{{ php7_version | regex_replace('-\\d+$', '') }}"
 
 - name: Install php-cli
   include: php-cli.yml
   when: php7_current.rc != 0 or php7_current.stdout.find("PHP {{ php7_real_version }} (cli)") == -1
+
+- include: ext-apcu.yml
+
+- include: ext-imagick.yml
+
+- include: ext-igbinary.yml
+
+- include: ext-memcached.yml
+
+- include: ext-redis.yml

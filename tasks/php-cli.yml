@@ -73,11 +73,3 @@
 - name: Create php7 shortcut
   file: src=/opt/php7/bin/php dest=/usr/local/bin/php7 owner=root group=root state=link
   become: yes
-
-- include: ext-apcu.yml
-
-- include: ext-memcached.yml
-
-- include: ext-redis.yml
-
-- include: ext-imagick.yml
