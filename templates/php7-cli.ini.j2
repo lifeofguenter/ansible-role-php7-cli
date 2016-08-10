@@ -49,10 +49,10 @@ mysqlnd.collect_statistics = Off
 mysqlnd.collect_memory_statistics = Off
 
 ; EXTENSION SECTION
-extension=apcu.so
-extension=imagick.so
-extension=igbinary.so
-extension=memcached.so
-extension=redis.so
+extension = igbinary.so
+extension = apcu.so
+extension = imagick.so
+extension = memcached.so
+extension = redis.so
 
-apc.shm_size=512M
+apc.shm_size = {{ php7cli_conf_apc_shm_size }}
