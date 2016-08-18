@@ -1,0 +1,37 @@
+---
+
+- name: Create directories
+  file: path=/etc/php7/cli/conf.d recurse=yes state=directory mode=0755
+  become: yes
+
+- name: Copy php.ini
+  template: src=php7-cli.ini.j2 dest=/etc/php7/cli/php.ini mode=0644
+  become: yes
+
+- name: Create composer shortcut
+  copy:
+    content: |
+      #!/bin/bash
+      set -e
+      /opt/php7/bin/php /usr/bin/composer "${@}"
+    dest: /usr/local/bin/composer7
+    mode: "a+x"
+    owner: root
+    group: root
+  become: yes
+
+- name: Create phpunit shortcut
+  copy:
+    content: |
+      #!/bin/bash
+      set -e
+      /opt/php7/bin/php /usr/local/bin/phpunit "${@}"
+    dest: /usr/local/bin/phpunit7
+    mode: "a+x"
+    owner: root
+    group: root
+  become: yes
+
+- name: Create php7 shortcut
+  file: src=/opt/php7/bin/php dest=/usr/local/bin/php7 owner=root group=root state=link
+  become: yes
