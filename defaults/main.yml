@@ -2,14 +2,14 @@
 
 php7cli_conf_apc_shm_size: 256M
 
-php7cli_version: 7.0.12-19
+php7cli_version: 7.0.13-20
 
-php7cli_ext_apcu_version: 5.1.6-19
+php7cli_ext_apcu_version: 5.1.7-20
 
-php7cli_ext_imagick_version: 3.4.3RC1-19
+php7cli_ext_imagick_version: 3.4.3RC1-20
 
-php7cli_ext_igbinary_version: 1.2.2b-19
+php7cli_ext_igbinary_version: 1.2.2b-20
 
-php7cli_ext_memcached_version: 3.0.0b-19
+php7cli_ext_memcached_version: 3.0.0b-20
 
-php7cli_ext_redis_version: 3.0.0-19
+php7cli_ext_redis_version: 3.0.0-20
