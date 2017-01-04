@@ -18,6 +18,7 @@ error_log = "{{ php7cli_error_log }}"
 {% else %}
 log_errors = Off
 {% endif %}
+
 request_order = "GP"
 register_globals = Off
 register_long_arrays = Off
@@ -48,11 +49,14 @@ mail.add_x_header = Off
 mysqlnd.collect_statistics = Off
 mysqlnd.collect_memory_statistics = Off
 
+[Session]
+session.gc_maxlifetime = 86400
+
 ; EXTENSION SECTION
 extension = igbinary.so
 extension = apcu.so
 extension = imagick.so
-extension = memcached.so
 extension = redis.so
 
+apc.serializer = igbinary
 apc.shm_size = {{ php7cli_conf_apc_shm_size }}
