@@ -3,7 +3,7 @@
 - name: replace default locations with php7
   file:
     src: /opt/php7/bin/{{ item }}
-    dest: /usr/bin/php
+    dest: /usr/bin/{{ item }}
     owner: root
     group: root
     state: link
