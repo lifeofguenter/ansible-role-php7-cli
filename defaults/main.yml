@@ -1,10 +1,10 @@
 ---
 
+php7cli_default: true
+
 php7cli_conf_apc_shm_size: 256M
 
 php7cli_version: 7.0.14-21
-
-php7cli_default: true
 
 php7cli_ext_apcu_version: 5.1.7-21
 

@@ -50,7 +50,8 @@ mysqlnd.collect_statistics = Off
 mysqlnd.collect_memory_statistics = Off
 
 [Session]
-session.gc_maxlifetime = 86400
+session.gc_maxlifetime = 2592000
+session.serialize_handler = igbinary
 
 ; EXTENSION SECTION
 extension = igbinary.so
