@@ -21,5 +21,7 @@
 
 - include: ext-redis.yml
 
+- include: ext-iredis.yml
+
 - include: default.yml
   when: php7cli_default | default(true) | bool
