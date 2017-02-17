@@ -23,5 +23,7 @@
 
 - include: ext-iredis.yml
 
+- include: ext-memcached.yml
+
 - include: default.yml
   when: php7cli_default | default(true) | bool
