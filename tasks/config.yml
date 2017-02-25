@@ -1,17 +1,33 @@
 ---
 
-- name: Create directories
-  file: path=/etc/php7/cli/conf.d recurse=yes state=directory mode=0755
+- name: create directories
+  file:
+    path: /etc/php7/cli/conf.d
+    recurse: yes
+    state: directory
+    mode: 0755
   become: yes
 
-- name: Copy php.ini
-  template: src=php7-cli.ini.j2 dest=/etc/php7/cli/php.ini mode=0644
+- name: create log folder
+  file:
+    state: directory
+    mode: 0755
+    recurse: yes
+    path: "{{ php7cli_error_log | dirname }}"
+  when: php7cli_error_log is defined
   become: yes
 
-- name: Create composer shortcut
+- name: copy php.ini
+  template:
+    src: php7-cli.ini.j2
+    dest: /etc/php7/cli/php.ini
+    mode: 0644
+  become: yes
+
+- name: create composer shortcut
   copy:
     content: |
-      #!/bin/bash
+      #!/usr/bin/env bash
       set -e
       /opt/php7/bin/php /usr/bin/composer "${@}"
     dest: /usr/local/bin/composer7
@@ -20,10 +36,10 @@
     group: root
   become: yes
 
-- name: Create phpunit shortcut
+- name: create phpunit shortcut
   copy:
     content: |
-      #!/bin/bash
+      #!/usr/bin/env bash
       set -e
       /opt/php7/bin/php /usr/local/bin/phpunit "${@}"
     dest: /usr/local/bin/phpunit7
@@ -32,6 +48,11 @@
     group: root
   become: yes
 
-- name: Create php7 shortcut
-  file: src=/opt/php7/bin/php dest=/usr/local/bin/php7 owner=root group=root state=link
+- name: create php7 shortcut
+  file:
+    src: /opt/php7/bin/php
+    dest: /usr/local/bin/php7
+    owner: root
+    group: root
+    state: link
   become: yes
