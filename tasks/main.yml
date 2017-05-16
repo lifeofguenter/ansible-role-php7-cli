@@ -5,6 +5,12 @@
   register: php7cli_current
   ignore_errors: yes
 
+- debug:
+  var: php7cli_real_version
+
+- debug:
+  var: php7cli_version_string_match
+
 - name: Install php-cli
   include: php-cli.yml
   when: php7cli_current.rc != 0 or not php7cli_current.stdout | search(php7cli_version_string_match)
