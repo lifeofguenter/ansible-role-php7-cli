@@ -11,6 +11,9 @@
 - debug:
     var: php7cli_version_string_match
 
+- debug:
+    var: php7cli_current
+
 - name: Install php-cli
   include: php-cli.yml
   when: php7cli_current.rc != 0 or not php7cli_current.stdout | search(php7cli_version_string_match)
