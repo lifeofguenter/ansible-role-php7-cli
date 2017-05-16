@@ -3,4 +3,4 @@
 # remove build from version var
 php7cli_real_version: "{{ php7cli_version | regex_replace('-\\d+$', '') }}"
 
-php7cli_version_string_match: "PHP {{ php7cli_real_version }} (cli)"
+php7cli_version_string_match: "PHP {{ php7cli_real_version }} \(cli\)"
