@@ -19,7 +19,7 @@
 
 - name: copy php.ini
   template:
-    src: php7-cli.ini.j2
+    src: php7-cli.ini
     dest: /etc/php7/cli/php.ini
     mode: 0644
   become: yes
