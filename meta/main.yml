@@ -7,10 +7,11 @@ galaxy_info:
   platforms:
   - name: Ubuntu
     versions:
-    - trusty
+      - trusty
   - name: Debian
     versions:
-    - jessie
+      - stretch
+      - jessie
   galaxy_tags:
   - system
   - development

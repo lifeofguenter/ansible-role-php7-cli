@@ -1,27 +1,20 @@
 ---
 
-- name: Get php version
+- name: install dependencies
+  include: packages-{{ ansible_distribution | lower }}-{{ ansible_distribution_release }}.yml
+
+- name: get php version
   command: php7 --version
   register: php7cli_current
   ignore_errors: yes
 
-- name: Install php-cli
+- name: install php-cli
   include: php-cli.yml
   when: php7cli_current.rc != 0 or not php7cli_current.stdout | search(php7cli_version_string_match)
 
 - include: config.yml
 
-- include: ext-apcu.yml
-
-- include: ext-imagick.yml
-
-- include: ext-igbinary.yml
-
-- include: ext-redis.yml
-
-- include: ext-iredis.yml
-
-- include: ext-memcached.yml
+- include: extensions.yml
 
 - include: default.yml
   when: php7cli_default | default(true) | bool
