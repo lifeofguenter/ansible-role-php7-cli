@@ -1,7 +1,7 @@
 ---
 
 - name: install dependencies
-  include: packages-{{ ansible_distribution | lower }}-{{ ansible_distribution_release }}.yml
+  include_tasks: packages-{{ ansible_distribution | lower }}-{{ ansible_distribution_release }}.yml
 
 - name: get php version
   command: php7 --version
@@ -9,12 +9,12 @@
   ignore_errors: yes
 
 - name: install php-cli
-  include: php-cli.yml
+  include_tasks: php-cli.yml
   when: php7cli_current.rc != 0 or not php7cli_current.stdout | search(php7cli_version_string_match)
 
-- include: config.yml
+- include_tasks: config.yml
 
-- include: extensions.yml
+- include_tasks: extensions.yml
 
-- include: default.yml
+- include_tasks: default.yml
   when: php7cli_default | default(true) | bool
