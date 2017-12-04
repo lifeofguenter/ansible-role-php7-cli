@@ -6,3 +6,5 @@ php7cli_real_version: "{{ php7cli_version | regex_replace('-\\d+$', '') }}"
 php7cli_version_string_match: "PHP {{ php7cli_real_version }} \\(cli\\)"
 
 php7cli_majorminor_version: "{{ php7cli_real_version.split('.')[0] }}.{{ php7cli_real_version.split('.')[1] }}"
+
+php7cli_download_url: https://ftp.weheartwebsites.de/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/php{{ php7cli_majorminor_version }}/php{{ php7cli_majorminor_version }}-cli_{{ php7cli_version }}_amd64.deb

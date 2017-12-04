@@ -2,5 +2,5 @@
 
 - name: install .deb
   apt:
-    deb: https://ftp.weheartwebsites.de/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/php{{ php7cli_majorminor_version }}-cli_{{ php7cli_version }}_amd64.deb
+    deb: "{{ php7cli_download_url }}"
   become: yes
