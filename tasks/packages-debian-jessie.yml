@@ -26,4 +26,5 @@
     - libhiredis0.10
     - libmemcached11
     - libmemcachedutil2
+    - libc-client2007e
   become: yes

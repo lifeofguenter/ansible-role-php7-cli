@@ -1,8 +1,6 @@
 ---
 
-- name: Fetch .deb
-  get_url: url=https://ftp.weheartwebsites.de/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/php7.0-cli_{{ php7cli_version }}_amd64.deb dest=/tmp/php7.0-cli_{{ php7cli_version }}_amd64.deb
-
-- name: Install .deb
-  apt: deb=/tmp/php7.0-cli_{{ php7cli_version }}_amd64.deb
+- name: install .deb
+  apt:
+    deb: https://ftp.weheartwebsites.de/{{ ansible_distribution | lower }}/{{ ansible_distribution_release }}/php{{ php7cli_majorminor_version }}-cli_{{ php7cli_version }}_amd64.deb
   become: yes

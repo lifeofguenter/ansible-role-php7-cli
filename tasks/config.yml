@@ -2,7 +2,7 @@
 
 - name: create directories
   file:
-    path: /etc/php7/cli/conf.d
+    path: /etc/php71/cli/conf.d
     recurse: yes
     state: directory
     mode: 0755
@@ -20,7 +20,7 @@
 - name: copy php.ini
   template:
     src: php7-cli.ini
-    dest: /etc/php7/cli/php.ini
+    dest: /etc/php71/cli/php.ini
     mode: 0644
   become: yes
 
@@ -29,7 +29,7 @@
     content: |
       #!/usr/bin/env bash
       set -e
-      /opt/php7/bin/php /usr/bin/composer "${@}"
+      /opt/php71/bin/php /usr/bin/composer "${@}"
     dest: /usr/local/bin/composer7
     mode: "a+x"
     owner: root
@@ -41,7 +41,7 @@
     content: |
       #!/usr/bin/env bash
       set -e
-      /opt/php7/bin/php /usr/local/bin/phpunit "${@}"
+      /opt/php71/bin/php /usr/local/bin/phpunit "${@}"
     dest: /usr/local/bin/phpunit7
     mode: "a+x"
     owner: root
@@ -50,7 +50,7 @@
 
 - name: create php7 shortcut
   file:
-    src: /opt/php7/bin/php
+    src: /opt/php71/bin/php
     dest: /usr/local/bin/php7
     owner: root
     group: root
