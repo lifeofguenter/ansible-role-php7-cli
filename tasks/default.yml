@@ -2,7 +2,7 @@
 
 - name: replace default locations with php7
   file:
-    src: /opt/php7/bin/{{ item }}
+    src: /opt/php71/bin/{{ item }}
     dest: /usr/bin/{{ item }}
     owner: root
     group: root
