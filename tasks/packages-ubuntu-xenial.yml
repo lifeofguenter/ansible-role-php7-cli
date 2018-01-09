@@ -19,7 +19,7 @@
     - libfreetype6
     - libmcrypt4
     - libedit2
-    - libreadline5
+    - libreadline6
     - libxslt1.1
     - libzip4
     - libmagickwand-6.q16-2
