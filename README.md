@@ -37,7 +37,7 @@ php7cli_ext_memcached_version: 3.0.4-10
 
 php7cli_ext_libsodium_version: 2.0.11-10
 
-php7cli_libsodium_version: 1.0.16-2
+php7cli_libsodium_version: 1.0.16-3
 
 php7cli_conf_apc_shm_size: 256M
 ```
