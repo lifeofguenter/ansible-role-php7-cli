@@ -13,25 +13,25 @@ none
 ```yaml
 php7cli_default: true
 
+php7cli_version: 7.1.19-10
+
+php7cli_ext_apcu_version: 5.1.11-10
+
+php7cli_ext_imagick_version: 3.4.3-10
+
+php7cli_ext_igbinary_version: 2.0.7-10
+
+php7cli_ext_redis_version: 3.1.6-10
+
+php7cli_ext_iredis_version: 1.0.0-10
+
+php7cli_ext_memcached_version: 3.0.4-10
+
+php7cli_ext_libsodium_version: 2.0.11-10
+
+php7cli_libsodium_version: 1.0.16-2
+
 php7cli_conf_apc_shm_size: 256M
-
-php7cli_version: 7.1.12-3
-
-php7cli_ext_apcu_version: 5.1.8-3
-
-php7cli_ext_imagick_version: 3.4.3-3
-
-php7cli_ext_igbinary_version: 2.0.5-3
-
-php7cli_ext_redis_version: 3.1.4-3
-
-php7cli_ext_iredis_version: 1.0.0-3
-
-php7cli_ext_memcached_version: 3.0.4-3
-
-php7cli_ext_libsodium_version: 2.0.10-3
-
-php7cli_libsodium_version: 1.0.15-1
 ```
 
 ## Dependencies
