@@ -9,12 +9,12 @@
   ignore_errors: yes
 
 - name: install php-cli
-  include_tasks: php-cli.yml
-  when: php7cli_current.rc != 0 or not php7cli_current.stdout | search(php7cli_version_string_match)
+  import_tasks: php-cli.yml
+  when: php7cli_current.rc != 0 or not php7cli_current.stdout is search(php7cli_version_string_match)
 
-- include_tasks: config.yml
+- import_tasks: config.yml
 
-- include_tasks: extensions.yml
+- import_tasks: extensions.yml
 
-- include_tasks: default.yml
+- import_tasks: default.yml
   when: php7cli_default | default(true) | bool
