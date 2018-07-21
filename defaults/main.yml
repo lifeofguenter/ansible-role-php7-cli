@@ -2,7 +2,7 @@
 
 php7cli_default: true
 
-php7cli_version: 7.1.12-14
+php7cli_version: 7.1.20-14
 
 php7cli_ext_apcu_version: 5.1.12-14
 
