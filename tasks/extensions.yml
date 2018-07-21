@@ -13,4 +13,5 @@
     - iredis_{{ php7cli_ext_iredis_version }}
     - memcached_{{ php7cli_ext_memcached_version }}
     - geoip_{{ php7cli_ext_geoip_version }}
+    - mailparse_{{ php7cli_ext_mailparse_version }}
   become: yes
