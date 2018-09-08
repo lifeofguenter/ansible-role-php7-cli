@@ -14,4 +14,5 @@
     - memcached_{{ php7cli_ext_memcached_version }}
     - geoip_{{ php7cli_ext_geoip_version }}
     - mailparse_{{ php7cli_ext_mailparse_version }}
+    - gnupg_{{ php7cli_ext_gnupg_version }}
   become: yes
