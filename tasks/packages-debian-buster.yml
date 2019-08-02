@@ -1,0 +1,36 @@
+---
+
+- name: install dependencies
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  vars:
+    packages:
+      - libsodium23
+      - libltdl7
+      - libssl1.1
+      - libicu63 
+      - libxml2
+      - libbz2-1.0
+      - libcurl3-gnutls
+      - libwebp6
+      - libpng16-16
+      - libfreetype6
+      - libmcrypt4
+      - libedit2
+      - libreadline7
+      - libxslt1.1
+      - libjpeg62-turbo
+      - libzip4
+      - libmagickwand-6.q16-6 
+      - libhiredis0.14 
+      - libmemcached11
+      - libmemcachedutil2
+      - libc-client2007e
+      - libkrb5-3
+      - libgmp10
+      - libgeoip1
+      - libgpgme11
+  become: yes

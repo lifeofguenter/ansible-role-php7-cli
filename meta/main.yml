@@ -13,6 +13,7 @@ galaxy_info:
       - trusty
   - name: Debian
     versions:
+      - buster
       - stretch
       - jessie
   galaxy_tags:
